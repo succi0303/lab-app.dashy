@@ -4,11 +4,11 @@ services:
   dashy:
     # To build from source, replace 'image: lissy93/dashy' with 'build: .'
     # build: .
-    image: lissy93/dashy
+    image: lissy93/dashy:latest
     container_name: Dashy
     # Pass in your config file below, by specifying the path on your host machine
-    # volumes:
-      # - /root/my-config.yml:/app/user-data/conf.yml
+    volumes:
+      - user-data:/app/user-data
     ports:
       - 3550:8080
     # Set any environmental variables
@@ -26,3 +26,5 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
+volumes:
+  user-data:
